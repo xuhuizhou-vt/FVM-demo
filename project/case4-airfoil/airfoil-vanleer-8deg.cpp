@@ -1,11 +1,3 @@
-//***********************************************************************************************
-// quasi-nozzle-FVM.cpp: Solve the Euler equations for the flow in a quasi-1D nozzle 
-//                       using the finite volume method.
-// Notes: central approximation for the fluxes; Euler explicit time integration method;
-//        2nd and 4th order JST damping for stability
-// © 2023 Xu-Hui Zhou All Rights Reserved.
-//***********************************************************************************************
-
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
