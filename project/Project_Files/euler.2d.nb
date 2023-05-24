@@ -1,0 +1,899 @@
+(***********************************************************************
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used on any computer system with Mathematica 3.0,
+MathReader 3.0, or any compatible application. The data for the notebook 
+starts with the line of stars above.
+
+To get the notebook into a Mathematica-compatible application, do one of 
+the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing the 
+word CacheID, otherwise Mathematica-compatible applications may try to 
+use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+***********************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     27186,        722]*)
+(*NotebookOutlinePosition[     27962,        749]*)
+(*  CellTagsIndexPosition[     27918,        745]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+    \(rho = rho0 + rhox\ Sin[Pi\ x/L] + rhoy\ Cos[Pi\ y/\((2\ L)\)]\)], 
+  "Input"],
+
+Cell[BoxData[
+    \(rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+      rhox\ Sin[\(\[Pi]\ x\)\/L]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FortranForm[%]\)], "Input"],
+
+Cell["\<\
+        rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -  rhox*Sin((Pi*x)/L)\
+\>", "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(press = press0\  + \ pressx\ Cos[2\ Pi\ x/L] + pressy\ Sin[Pi\ y/L]\)], 
+  "Input"],
+
+Cell[BoxData[
+    \(press0 + pressx\ Cos[\(2\ \[Pi]\ x\)\/L] + 
+      pressy\ Sin[\(\[Pi]\ y\)\/L]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FortranForm[%]\)], "Input"],
+
+Cell["press0 + pressx*Cos((2*Pi*x)/L) + pressy*Sin((Pi*y)/L)", "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"],
+
+Cell[BoxData[""], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(uvel = 
+      uvel0\  + \ uvelx\ Sin\ [3\ Pi\ x/\((2\ L)\)] + \ 
+        uvely\ Cos[3\ Pi\ y/\((5\ L)\)]\)], "Input"],
+
+Cell[BoxData[
+    \(uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+      uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FortranForm[%]\)], "Input"],
+
+Cell["\<\
+        uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -  uvelx*Sin((3*Pi*x)/(2.*L))\
+\>", "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(vvel = 
+      vvel0 + \ vvelx\ Cos[Pi\ x/\((2\ L)\)] + \ 
+        vvely\ Sin[2\ Pi\ y/\((3\ L)\)]\)], "Input"],
+
+Cell[BoxData[
+    \(vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+      vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(FortranForm[%]\n\t\)\)], "Input"],
+
+Cell["\<\
+        vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -  vvely*Sin((2*Pi*y)/(3.*L))\
+\>", "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(wvel = wvel0\)], "Input"],
+
+Cell[BoxData[
+    \(wvel0\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(temp = press/\((rho\ R)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(press0 + pressx\ Cos[\(2\ \[Pi]\ x\)\/L] + 
+        pressy\ Sin[\(\[Pi]\ y\)\/L]\)\/\(R\ \((
+        rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + rhox\ Sin[\(\[Pi]\ x\)\/L])
+        \)\)\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FortranForm[%]\)], "Input"],
+
+Cell["\<\
+        (press0 + pressx*Cos((2*Pi*x)/L) + 
+     -    pressy*Sin((Pi*y)/L))/
+     -  (R*(rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -      rhox*Sin((Pi*x)/L)))\
+\>", "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(energy = 1/\((gamma - 1)\) press/rho\)], "Input"],
+
+Cell[BoxData[
+    \(\(press0 + pressx\ Cos[\(2\ \[Pi]\ x\)\/L] + 
+        pressy\ Sin[\(\[Pi]\ y\)\/L]\)\/\(\((\(-1\) + gamma)\)\ 
+        \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+            rhox\ Sin[\(\[Pi]\ x\)\/L])\)\)\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FortranForm[%]\)], "Input"],
+
+Cell["\<\
+        (press0 + pressx*Cos((2*Pi*x)/L) + 
+     -    pressy*Sin((Pi*y)/L))/
+     -  ((-1 + gamma)*(rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -      rhox*Sin((Pi*x)/L)))\
+\>", "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(velmag2 = uvel^2 + vvel^2 + wvel^2\)], "Input"],
+
+Cell[BoxData[
+    \(wvel0\^2 + 
+      \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+            uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\^2 + 
+      \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+            vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\)\^2\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FortranForm[%]\)], "Input"],
+
+Cell["\<\
+        wvel0**2 + (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -     uvelx*Sin((3*Pi*x)/(2.*L)))**2 + 
+     -  (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -     vvely*Sin((2*Pi*y)/(3.*L)))**2\
+\>", "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(totenergy = energy + velmag2/2\)], "Input"],
+
+Cell[BoxData[
+    \(1\/2\ 
+        \((wvel0\^2 + 
+            \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+                  uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\^2 + 
+            \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+                  vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\)\^2)\) + 
+      \(press0 + pressx\ Cos[\(2\ \[Pi]\ x\)\/L] + 
+          pressy\ Sin[\(\[Pi]\ y\)\/L]\)\/\(\((\(-1\) + gamma)\)\ 
+          \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+              rhox\ Sin[\(\[Pi]\ x\)\/L])\)\)\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FortranForm[%]\)], "Input"],
+
+Cell["\<\
+        (wvel0**2 + (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -        uvelx*Sin((3*Pi*x)/(2.*L)))**2 + 
+     -     (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -        vvely*Sin((2*Pi*y)/(3.*L)))**2)/2. + 
+     -  (press0 + pressx*Cos((2*Pi*x)/L) + 
+     -     pressy*Sin((Pi*y)/L))/
+     -   ((-1 + gamma)*(rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -       rhox*Sin((Pi*x)/L)))\
+\>", "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(masseq = 
+      D[rho, t] + D[rho\ uvel, x] + D[rho\ vvel, y]\n\t + D[rho\ wvel, z]\)], 
+  "Input"],
+
+Cell[BoxData[
+    \(\(3\ \[Pi]\ uvelx\ Cos[\(3\ \[Pi]\ x\)\/\(2\ L\)]\ 
+          \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+              rhox\ Sin[\(\[Pi]\ x\)\/L])\)\)\/\(2\ L\) + 
+      \(2\ \[Pi]\ vvely\ Cos[\(2\ \[Pi]\ y\)\/\(3\ L\)]\ 
+          \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+              rhox\ Sin[\(\[Pi]\ x\)\/L])\)\)\/\(3\ L\) + 
+      \(\[Pi]\ rhox\ Cos[\(\[Pi]\ x\)\/L]\ 
+          \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+              uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\)\/L - 
+      \(\[Pi]\ rhoy\ Sin[\(\[Pi]\ y\)\/\(2\ L\)]\ 
+          \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+              vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\)\)\/\(2\ L\)\)], 
+  "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FortranForm[%]\)], "Input"],
+
+Cell["\<\
+        (3*Pi*uvelx*Cos((3*Pi*x)/(2.*L))*
+     -     (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -       rhox*Sin((Pi*x)/L)))/(2.*L) + 
+     -  (2*Pi*vvely*Cos((2*Pi*y)/(3.*L))*
+     -     (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -       rhox*Sin((Pi*x)/L)))/(3.*L) + 
+     -  (Pi*rhox*Cos((Pi*x)/L)*
+     -     (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -       uvelx*Sin((3*Pi*x)/(2.*L))))/L - 
+     -  (Pi*rhoy*Sin((Pi*y)/(2.*L))*
+     -     (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -       vvely*Sin((2*Pi*y)/(3.*L))))/(2.*L)\
+\>", "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(xmtmeq = 
+      D[rho\ uvel, t] + D[rho\ uvel^2 + press, x]\n\t + 
+        D[rho\ uvel\ vvel, y] + D[rho\ uvel\ wvel, z]\n\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(1\/L\((
+        3\ \[Pi]\ uvelx\ Cos[\(3\ \[Pi]\ x\)\/\(2\ L\)]\ 
+          \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+              rhox\ Sin[\(\[Pi]\ x\)\/L])\)\ 
+          \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+              uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\))\)\) + 
+      \(1\/\(3\ L\)\((
+        2\ \[Pi]\ vvely\ Cos[\(2\ \[Pi]\ y\)\/\(3\ L\)]\ 
+          \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+              rhox\ Sin[\(\[Pi]\ x\)\/L])\)\ 
+          \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+              uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\))\)\) + 
+      \(\[Pi]\ rhox\ Cos[\(\[Pi]\ x\)\/L]\ 
+          \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+                uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\^2\)\/L - 
+      \(2\ \[Pi]\ pressx\ Sin[\(2\ \[Pi]\ x\)\/L]\)\/L - 
+      \(1\/\(2\ L\)\((
+        \[Pi]\ rhoy\ \((
+          uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+            uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\ 
+          Sin[\(\[Pi]\ y\)\/\(2\ L\)]\ 
+          \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+              vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\))\)\) - 
+      \(1\/\(5\ L\)\((
+        3\ \[Pi]\ uvely\ \((
+          rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+            rhox\ Sin[\(\[Pi]\ x\)\/L])\)\ Sin[\(3\ \[Pi]\ y\)\/\(5\ L\)]\ 
+          \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+              vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\))\)\)\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FortranForm[%]\)], "Input"],
+
+Cell["\<\
+        (3*Pi*uvelx*Cos((3*Pi*x)/(2.*L))*
+     -     (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -       rhox*Sin((Pi*x)/L))*
+     -     (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -       uvelx*Sin((3*Pi*x)/(2.*L))))/L + 
+     -  (2*Pi*vvely*Cos((2*Pi*y)/(3.*L))*
+     -     (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -       rhox*Sin((Pi*x)/L))*
+     -     (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -       uvelx*Sin((3*Pi*x)/(2.*L))))/(3.*L) + 
+     -  (Pi*rhox*Cos((Pi*x)/L)*
+     -     (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -        uvelx*Sin((3*Pi*x)/(2.*L)))**2)/L - 
+     -  (2*Pi*pressx*Sin((2*Pi*x)/L))/L - 
+     -  (Pi*rhoy*(uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -       uvelx*Sin((3*Pi*x)/(2.*L)))*
+     -     Sin((Pi*y)/(2.*L))*
+     -     (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -       vvely*Sin((2*Pi*y)/(3.*L))))/(2.*L) - 
+     -  (3*Pi*uvely*(rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -       rhox*Sin((Pi*x)/L))*Sin((3*Pi*y)/(5.*L))*
+     -     (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -       vvely*Sin((2*Pi*y)/(3.*L))))/(5.*L)\
+\>", "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ymtmeq = 
+      D[rho\ vvel, t] + D[rho\ uvel\ vvel, x]\n\t + 
+        D[rho\ vvel^2 + press, y] + D[rho\ vvel\ wvel, z]\)], "Input"],
+
+Cell[BoxData[
+    \(\(\[Pi]\ pressy\ Cos[\(\[Pi]\ y\)\/L]\)\/L - 
+      \(1\/\(2\ L\)\((
+        \[Pi]\ vvelx\ Sin[\(\[Pi]\ x\)\/\(2\ L\)]\ 
+          \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+              rhox\ Sin[\(\[Pi]\ x\)\/L])\)\ 
+          \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+              uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\))\)\) + 
+      \(1\/\(2\ L\)\((
+        3\ \[Pi]\ uvelx\ Cos[\(3\ \[Pi]\ x\)\/\(2\ L\)]\ 
+          \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+              rhox\ Sin[\(\[Pi]\ x\)\/L])\)\ 
+          \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+              vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\))\)\) + 
+      \(1\/\(3\ L\)\((
+        4\ \[Pi]\ vvely\ Cos[\(2\ \[Pi]\ y\)\/\(3\ L\)]\ 
+          \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+              rhox\ Sin[\(\[Pi]\ x\)\/L])\)\ 
+          \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+              vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\))\)\) + 
+      \(1\/L\((\[Pi]\ rhox\ Cos[\(\[Pi]\ x\)\/L]\ 
+          \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+              uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\ 
+          \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+              vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\))\)\) - 
+      \(\[Pi]\ rhoy\ Sin[\(\[Pi]\ y\)\/\(2\ L\)]\ 
+          \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+                vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\)\^2\)\/\(2\ L\)\)], 
+  "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FortranForm[%]\)], "Input"],
+
+Cell["\<\
+        (Pi*pressy*Cos((Pi*y)/L))/L - 
+     -  (Pi*vvelx*Sin((Pi*x)/(2.*L))*
+     -     (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -       rhox*Sin((Pi*x)/L))*
+     -     (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -       uvelx*Sin((3*Pi*x)/(2.*L))))/(2.*L) + 
+     -  (3*Pi*uvelx*Cos((3*Pi*x)/(2.*L))*
+     -     (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -       rhox*Sin((Pi*x)/L))*
+     -     (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -       vvely*Sin((2*Pi*y)/(3.*L))))/(2.*L) + 
+     -  (4*Pi*vvely*Cos((2*Pi*y)/(3.*L))*
+     -     (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -       rhox*Sin((Pi*x)/L))*
+     -     (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -       vvely*Sin((2*Pi*y)/(3.*L))))/(3.*L) + 
+     -  (Pi*rhox*Cos((Pi*x)/L)*
+     -     (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -       uvelx*Sin((3*Pi*x)/(2.*L)))*
+     -     (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -       vvely*Sin((2*Pi*y)/(3.*L))))/L - 
+     -  (Pi*rhoy*Sin((Pi*y)/(2.*L))*
+     -     (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -        vvely*Sin((2*Pi*y)/(3.*L)))**2)/(2.*L)\
+\>", "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(zmtmeq = 
+      D[rho\ wvel, t] + D[rho\ uvel\ wvel, x]\n\t + D[rho\ vvel\ wvel, y] + 
+        D[rho\ wvel^2 + press, z]\)], "Input"],
+
+Cell[BoxData[
+    \(\(3\ \[Pi]\ uvelx\ wvel0\ Cos[\(3\ \[Pi]\ x\)\/\(2\ L\)]\ 
+          \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+              rhox\ Sin[\(\[Pi]\ x\)\/L])\)\)\/\(2\ L\) + 
+      \(2\ \[Pi]\ vvely\ wvel0\ Cos[\(2\ \[Pi]\ y\)\/\(3\ L\)]\ 
+          \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+              rhox\ Sin[\(\[Pi]\ x\)\/L])\)\)\/\(3\ L\) + 
+      \(\[Pi]\ rhox\ wvel0\ Cos[\(\[Pi]\ x\)\/L]\ 
+          \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+              uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\)\/L - 
+      \(\[Pi]\ rhoy\ wvel0\ Sin[\(\[Pi]\ y\)\/\(2\ L\)]\ 
+          \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+              vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\)\)\/\(2\ L\)\)], 
+  "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FortranForm[%]\)], "Input"],
+
+Cell["\<\
+        (3*Pi*uvelx*wvel0*Cos((3*Pi*x)/(2.*L))*
+     -     (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -       rhox*Sin((Pi*x)/L)))/(2.*L) + 
+     -  (2*Pi*vvely*wvel0*Cos((2*Pi*y)/(3.*L))*
+     -     (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -       rhox*Sin((Pi*x)/L)))/(3.*L) + 
+     -  (Pi*rhox*wvel0*Cos((Pi*x)/L)*
+     -     (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -       uvelx*Sin((3*Pi*x)/(2.*L))))/L - 
+     -  (Pi*rhoy*wvel0*Sin((Pi*y)/(2.*L))*
+     -     (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -       vvely*Sin((2*Pi*y)/(3.*L))))/(2.*L)\
+\>", "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(energyeq = 
+      D[rho\ totenergy, t]\n\ \  + D[\((rho\ totenergy + press)\) uvel, x]\n\t
+         + D[\((rho\ totenergy + press)\) vvel, y]\n\t + 
+        D[\((rho\ totenergy + press)\) wvel, z]\)], "Input"],
+
+Cell[BoxData[
+    \(\((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+            uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\ 
+        \((\(-\(\(2\ \[Pi]\ pressx\ Sin[\(2\ \[Pi]\ x\)\/L]\)\/L\)\) + 
+            \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+                  rhox\ Sin[\(\[Pi]\ x\)\/L])\)\ 
+              \((\(-\(\(2\ \[Pi]\ pressx\ 
+                          Sin[\(2\ \[Pi]\ x\)\/L]\)\/\(\((\(-1\) + gamma)\)\ L
+                          \ \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+                            rhox\ Sin[\(\[Pi]\ x\)\/L])\)\)\)\) + 
+                  1\/2\ \((
+                      \(1\/L\((
+                          3\ \[Pi]\ uvelx\ Cos[\(3\ \[Pi]\ x\)\/\(2\ L\)]\ 
+                            \((uvel0 + 
+                                uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+                                uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\))
+                          \)\) - 
+                        \(1\/L\((
+                          \[Pi]\ vvelx\ Sin[\(\[Pi]\ x\)\/\(2\ L\)]\ 
+                            \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+                                vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\))\)\))
+                      \) - \((
+                      \[Pi]\ rhox\ Cos[\(\[Pi]\ x\)\/L]\ 
+                        \((press0 + pressx\ Cos[\(2\ \[Pi]\ x\)\/L] + 
+                            pressy\ Sin[\(\[Pi]\ y\)\/L])\))\)/
+                    \((\((\(-1\) + gamma)\)\ L\ 
+                        \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+                            rhox\ Sin[\(\[Pi]\ x\)\/L])\)\^2)\))\) + 
+            \(1\/L\((
+              \[Pi]\ rhox\ Cos[\(\[Pi]\ x\)\/L]\ 
+                \((1\/2\ 
+                      \((wvel0\^2 + 
+                          \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+                                uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\^2 + 
+                          \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+                                vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\)\^2)
+                        \) + \(press0 + pressx\ Cos[\(2\ \[Pi]\ x\)\/L] + 
+                        pressy\ Sin[\(\[Pi]\ y\)\/L]\)\/\(\((\(-1\) + gamma)
+                          \)\ \((
+                          rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+                            rhox\ Sin[\(\[Pi]\ x\)\/L])\)\))\))\)\))\) + 
+      \(1\/\(2\ L\)\((
+        3\ \[Pi]\ uvelx\ Cos[\(3\ \[Pi]\ x\)\/\(2\ L\)]\ 
+          \((press0 + pressx\ Cos[\(2\ \[Pi]\ x\)\/L] + 
+              pressy\ Sin[\(\[Pi]\ y\)\/L] + 
+              \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+                    rhox\ Sin[\(\[Pi]\ x\)\/L])\)\ 
+                \((1\/2\ 
+                      \((wvel0\^2 + 
+                          \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+                                uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\^2 + 
+                          \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+                                vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\)\^2)
+                        \) + \(press0 + pressx\ Cos[\(2\ \[Pi]\ x\)\/L] + 
+                        pressy\ Sin[\(\[Pi]\ y\)\/L]\)\/\(\((\(-1\) + gamma)
+                          \)\ \((
+                          rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+                            rhox\ Sin[\(\[Pi]\ x\)\/L])\)\))\))\))\)\) + 
+      \(1\/\(3\ L\)\((
+        2\ \[Pi]\ vvely\ Cos[\(2\ \[Pi]\ y\)\/\(3\ L\)]\ 
+          \((press0 + pressx\ Cos[\(2\ \[Pi]\ x\)\/L] + 
+              pressy\ Sin[\(\[Pi]\ y\)\/L] + 
+              \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+                    rhox\ Sin[\(\[Pi]\ x\)\/L])\)\ 
+                \((1\/2\ 
+                      \((wvel0\^2 + 
+                          \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+                                uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\^2 + 
+                          \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+                                vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\)\^2)
+                        \) + \(press0 + pressx\ Cos[\(2\ \[Pi]\ x\)\/L] + 
+                        pressy\ Sin[\(\[Pi]\ y\)\/L]\)\/\(\((\(-1\) + gamma)
+                          \)\ \((
+                          rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+                            rhox\ Sin[\(\[Pi]\ x\)\/L])\)\))\))\))\)\) + 
+      \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+            vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\)\ 
+        \((\(\[Pi]\ pressy\ Cos[\(\[Pi]\ y\)\/L]\)\/L - 
+            \(1\/\(2\ L\)\((
+              \[Pi]\ rhoy\ Sin[\(\[Pi]\ y\)\/\(2\ L\)]\ 
+                \((1\/2\ 
+                      \((wvel0\^2 + 
+                          \((uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+                                uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\^2 + 
+                          \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+                                vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\)\^2)
+                        \) + \(press0 + pressx\ Cos[\(2\ \[Pi]\ x\)\/L] + 
+                        pressy\ Sin[\(\[Pi]\ y\)\/L]\)\/\(\((\(-1\) + gamma)
+                          \)\ \((
+                          rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+                            rhox\ Sin[\(\[Pi]\ x\)\/L])\)\))\))\)\) + 
+            \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+                  rhox\ Sin[\(\[Pi]\ x\)\/L])\)\ 
+              \((\(\[Pi]\ pressy\ 
+                      Cos[\(\[Pi]\ y\)\/L]\)\/\(\((\(-1\) + gamma)\)\ L\ \((
+                      rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+                        rhox\ Sin[\(\[Pi]\ x\)\/L])\)\) + 
+                  1\/2\ \((
+                      \(-\(1\/\(5\ L\)\((
+                            6\ \[Pi]\ uvely\ \((
+                              uvel0 + uvely\ Cos[\(3\ \[Pi]\ y\)\/\(5\ L\)] + 
+                                uvelx\ Sin[\(3\ \[Pi]\ x\)\/\(2\ L\)])\)\ 
+                              Sin[\(3\ \[Pi]\ y\)\/\(5\ L\)])\)\)\) + 
+                        \(1\/\(3\ L\)\((
+                          4\ \[Pi]\ vvely\ Cos[\(2\ \[Pi]\ y\)\/\(3\ L\)]\ 
+                            \((vvel0 + vvelx\ Cos[\(\[Pi]\ x\)\/\(2\ L\)] + 
+                                vvely\ Sin[\(2\ \[Pi]\ y\)\/\(3\ L\)])\))\)\))
+                      \) + \((
+                      \[Pi]\ rhoy\ Sin[\(\[Pi]\ y\)\/\(2\ L\)]\ 
+                        \((press0 + pressx\ Cos[\(2\ \[Pi]\ x\)\/L] + 
+                            pressy\ Sin[\(\[Pi]\ y\)\/L])\))\)/
+                    \((2\ \((\(-1\) + gamma)\)\ L\ 
+                        \((rho0 + rhoy\ Cos[\(\[Pi]\ y\)\/\(2\ L\)] + 
+                            rhox\ Sin[\(\[Pi]\ x\)\/L])\)\^2)\))\))\)\)], 
+  "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FortranForm[%]\)], "Input"],
+
+Cell["\<\
+        (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -     uvelx*Sin((3*Pi*x)/(2.*L)))*
+     -   ((-2*Pi*pressx*Sin((2*Pi*x)/L))/L + 
+     -     (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -        rhox*Sin((Pi*x)/L))*
+     -      ((-2*Pi*pressx*Sin((2*Pi*x)/L))/
+     -         ((-1 + gamma)*L*
+     -           (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -             rhox*Sin((Pi*x)/L))) + 
+     -        ((3*Pi*uvelx*Cos((3*Pi*x)/(2.*L))*
+     -              (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -                uvelx*Sin((3*Pi*x)/(2.*L))))/L - 
+     -           (Pi*vvelx*Sin((Pi*x)/(2.*L))*
+     -              (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -                vvely*Sin((2*Pi*y)/(3.*L))))/L)/2. - 
+     -        (Pi*rhox*Cos((Pi*x)/L)*
+     -           (press0 + pressx*Cos((2*Pi*x)/L) + 
+     -             pressy*Sin((Pi*y)/L)))/
+     -         ((-1 + gamma)*L*
+     -           (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -              rhox*Sin((Pi*x)/L))**2)) + 
+     -     (Pi*rhox*Cos((Pi*x)/L)*
+     -        ((wvel0**2 + 
+     -             (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -                uvelx*Sin((3*Pi*x)/(2.*L)))**2 + 
+     -             (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -                vvely*Sin((2*Pi*y)/(3.*L)))**2)/2. + 
+     -          (press0 + pressx*Cos((2*Pi*x)/L) + 
+     -             pressy*Sin((Pi*y)/L))/
+     -           ((-1 + gamma)*
+     -             (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -               rhox*Sin((Pi*x)/L)))))/L) + 
+     -  (3*Pi*uvelx*Cos((3*Pi*x)/(2.*L))*
+     -     (press0 + pressx*Cos((2*Pi*x)/L) + 
+     -       pressy*Sin((Pi*y)/L) + 
+     -       (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -          rhox*Sin((Pi*x)/L))*
+     -        ((wvel0**2 + 
+     -             (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -                uvelx*Sin((3*Pi*x)/(2.*L)))**2 + 
+     -             (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -                vvely*Sin((2*Pi*y)/(3.*L)))**2)/2. + 
+     -          (press0 + pressx*Cos((2*Pi*x)/L) + 
+     -             pressy*Sin((Pi*y)/L))/
+     -           ((-1 + gamma)*
+     -             (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -               rhox*Sin((Pi*x)/L))))))/(2.*L) + 
+     -  (2*Pi*vvely*Cos((2*Pi*y)/(3.*L))*
+     -     (press0 + pressx*Cos((2*Pi*x)/L) + 
+     -       pressy*Sin((Pi*y)/L) + 
+     -       (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -          rhox*Sin((Pi*x)/L))*
+     -        ((wvel0**2 + 
+     -             (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -                uvelx*Sin((3*Pi*x)/(2.*L)))**2 + 
+     -             (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -                vvely*Sin((2*Pi*y)/(3.*L)))**2)/2. + 
+     -          (press0 + pressx*Cos((2*Pi*x)/L) + 
+     -             pressy*Sin((Pi*y)/L))/
+     -           ((-1 + gamma)*
+     -             (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -               rhox*Sin((Pi*x)/L))))))/(3.*L) + 
+     -  (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -     vvely*Sin((2*Pi*y)/(3.*L)))*
+     -   ((Pi*pressy*Cos((Pi*y)/L))/L - 
+     -     (Pi*rhoy*Sin((Pi*y)/(2.*L))*
+     -        ((wvel0**2 + 
+     -             (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -                uvelx*Sin((3*Pi*x)/(2.*L)))**2 + 
+     -             (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -                vvely*Sin((2*Pi*y)/(3.*L)))**2)/2. + 
+     -          (press0 + pressx*Cos((2*Pi*x)/L) + 
+     -             pressy*Sin((Pi*y)/L))/
+     -           ((-1 + gamma)*
+     -             (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -               rhox*Sin((Pi*x)/L)))))/(2.*L) + 
+     -     (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -        rhox*Sin((Pi*x)/L))*
+     -      ((Pi*pressy*Cos((Pi*y)/L))/
+     -         ((-1 + gamma)*L*
+     -           (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -             rhox*Sin((Pi*x)/L))) + 
+     -        ((-6*Pi*uvely*
+     -              (uvel0 + uvely*Cos((3*Pi*y)/(5.*L)) + 
+     -                uvelx*Sin((3*Pi*x)/(2.*L)))*
+     -              Sin((3*Pi*y)/(5.*L)))/(5.*L) + 
+     -           (4*Pi*vvely*Cos((2*Pi*y)/(3.*L))*
+     -              (vvel0 + vvelx*Cos((Pi*x)/(2.*L)) + 
+     -                vvely*Sin((2*Pi*y)/(3.*L))))/(3.*L))/
+     -         2. + (Pi*rhoy*Sin((Pi*y)/(2.*L))*
+     -           (press0 + pressx*Cos((2*Pi*x)/L) + 
+     -             pressy*Sin((Pi*y)/L)))/
+     -         (2.*(-1 + gamma)*L*
+     -           (rho0 + rhoy*Cos((Pi*y)/(2.*L)) + 
+     -              rhox*Sin((Pi*x)/L))**2)))\
+\>", "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\n\)], "Input"]
+},
+FrontEndVersion->"X 3.0",
+ScreenRectangle->{{0, 2560}, {0, 1024}},
+WindowSize->{985, 865},
+WindowMargins->{{180, Automatic}, {Automatic, 25}},
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"PaperSize"->{612, 792},
+"PaperOrientation"->"Portrait",
+"Magnification"->1}
+]
+
+
+(***********************************************************************
+Cached data follows.  If you edit this Notebook file directly, not using
+Mathematica, you must remove the line containing CacheID at the top of 
+the file.  The cache data will then be recreated when you save this file 
+from within Mathematica.
+***********************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1731, 51, 97, 2, 38, "Input"],
+Cell[1831, 55, 110, 2, 62, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[1978, 62, 47, 1, 38, "Input"],
+Cell[2028, 65, 94, 3, 77, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2159, 73, 103, 2, 38, "Input"],
+Cell[2265, 77, 112, 2, 66, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2414, 84, 47, 1, 38, "Input"],
+Cell[2464, 87, 72, 0, 51, "Output"]
+}, Open  ]],
+Cell[2551, 90, 26, 0, 38, "Input"],
+Cell[2580, 92, 26, 0, 38, "Input"],
+
+Cell[CellGroupData[{
+Cell[2631, 96, 137, 3, 38, "Input"],
+Cell[2771, 101, 126, 2, 66, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2934, 108, 47, 1, 38, "Input"],
+Cell[2984, 111, 106, 3, 77, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3127, 119, 130, 3, 38, "Input"],
+Cell[3260, 124, 123, 2, 66, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3420, 131, 55, 1, 68, "Input"],
+Cell[3478, 134, 104, 3, 77, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3619, 142, 45, 1, 38, "Input"],
+Cell[3667, 145, 39, 1, 38, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3743, 151, 58, 1, 38, "Input"],
+Cell[3804, 154, 220, 4, 94, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4061, 163, 47, 1, 38, "Input"],
+Cell[4111, 166, 181, 5, 129, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4329, 176, 69, 1, 38, "Input"],
+Cell[4401, 179, 243, 4, 94, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4681, 188, 47, 1, 38, "Input"],
+Cell[4731, 191, 192, 5, 129, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4960, 201, 67, 1, 38, "Input"],
+Cell[5030, 204, 273, 5, 141, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5340, 214, 47, 1, 38, "Input"],
+Cell[5390, 217, 215, 5, 129, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5642, 227, 63, 1, 38, "Input"],
+Cell[5708, 230, 543, 10, 243, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6288, 245, 47, 1, 38, "Input"],
+Cell[6338, 248, 402, 9, 233, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6777, 262, 119, 3, 68, "Input"],
+Cell[6899, 267, 724, 13, 325, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[7660, 285, 47, 1, 38, "Input"],
+Cell[7710, 288, 552, 13, 337, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8299, 306, 159, 3, 98, "Input"],
+Cell[8461, 311, 1495, 29, 682, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[9993, 345, 47, 1, 38, "Input"],
+Cell[10043, 348, 1080, 24, 623, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[11160, 377, 153, 3, 68, "Input"],
+Cell[11316, 382, 1471, 28, 674, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[12824, 415, 47, 1, 38, "Input"],
+Cell[12874, 418, 1085, 25, 649, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[13996, 448, 153, 3, 68, "Input"],
+Cell[14152, 453, 752, 13, 355, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[14941, 471, 47, 1, 38, "Input"],
+Cell[14991, 474, 576, 13, 337, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[15604, 492, 229, 4, 128, "Input"],
+Cell[15836, 498, 6730, 114, 3018, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[22603, 617, 47, 1, 38, "Input"],
+Cell[22653, 620, 4479, 96, 2495, "Output"]
+}, Open  ]],
+Cell[27147, 719, 35, 1, 68, "Input"]
+}
+]
+*)
+
+
+
+
+(***********************************************************************
+End of Mathematica Notebook file.
+***********************************************************************)
+
